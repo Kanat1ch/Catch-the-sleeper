@@ -31,11 +31,11 @@ function calcWidth() {
     const windowWidth = document.documentElement.clientWidth;
 
     if (windowWidth > 540) {
-        sleeperRenderTime = 1000;
-        sleeperHideTime = 600;
+        sleeperRenderTime = 500;
+        sleeperHideTime = 900;
     } else {
-        sleeperRenderTime = 700;
-        sleeperHideTime = 400;
+        sleeperRenderTime = 300;
+        sleeperHideTime = 650;
     }
 }
 
@@ -82,9 +82,9 @@ function startGame() {
         setTimeout(() => {
             zoneEl[index].innerHTML = '';
             zoneEl[index].classList.remove('active');
-        }, sleeperRenderTime);
+        }, sleeperHideTime);
         
-    }, sleeperHideTime);
+    }, sleeperRenderTime);
 }
 
 function stopGame() {
