@@ -11,8 +11,9 @@ const modal = document.querySelector('.modal');
 const modalBtn = document.querySelector('.modal button');
 const overlay = document.querySelector('.overlay');
 
-if (!localStorage.getItem('record')) {
+if (!(localStorage.getItem('record'))) {
     localStorage.setItem('record', 0);
+    recordCountEl.textContent = localStorage.getItem('record');
 } else {
     recordCountEl.textContent = localStorage.getItem('record');
 }
@@ -22,6 +23,21 @@ let score = 0;
 let timeRemaining = 60;
 let renderSleeper;
 let timerId;
+
+let sleeperRenderTime;
+let sleeperHideTime;
+
+function calcWidth() {
+    const windowWidth = document.documentElement.clientWidth;
+
+    if (windowWidth > 540) {
+        sleeperRenderTime = 1000;
+        sleeperHideTime = 600;
+    } else {
+        sleeperRenderTime = 700;
+        sleeperHideTime = 400;
+    }
+}
 
 function startGame() {
     stopGame();
@@ -66,9 +82,9 @@ function startGame() {
         setTimeout(() => {
             zoneEl[index].innerHTML = '';
             zoneEl[index].classList.remove('active');
-        }, 1000);
+        }, sleeperRenderTime);
         
-    }, 600);
+    }, sleeperHideTime);
 }
 
 function stopGame() {
@@ -122,3 +138,4 @@ stopBtn.addEventListener('click', stopGame);
 modalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 document.body.addEventListener('keydown', closeModal);
+window.addEventListener('load', calcWidth);
