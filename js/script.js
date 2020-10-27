@@ -61,7 +61,7 @@ function startGame() {
         let index = Math.floor((Math.random() * zoneEl.length));
         console.log(index);
         zoneEl[index].classList.add('active');
-        zoneEl[index].innerHTML = `<img src="sleeper.png" alt="sleeper" class="active">`;
+        zoneEl[index].innerHTML = `<img src="img/sleeper.png" alt="sleeper" class="active">`;
 
         setTimeout(() => {
             zoneEl[index].innerHTML = '';

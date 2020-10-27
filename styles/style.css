@@ -63,7 +63,7 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.4);
     cursor: auto;
-    cursor: url('./hammer.png') 30 25, auto;
+    cursor: url('../img/hammer.png') 30 25, auto;
 }
 
 .zone:hover {
@@ -72,7 +72,7 @@ body {
 
 .zone:active {
     cursor: auto;
-    cursor: url('./hammer-active.png') 30 25, auto;
+    cursor: url('../img/hammer-active.png') 30 25, auto;
 }
 
 .zone img {
