@@ -120,6 +120,10 @@ function isCorrect(e) {
             score -= 0.5;
             scoreEl.textContent = score;
         }
+        e.target.closest('.zone').classList.add('wrong');
+        setTimeout(() => {
+            e.target.closest('.zone').classList.remove('wrong');
+        }, 100);
     }
 }
 
