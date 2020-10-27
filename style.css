@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Syne Mono', monospace;
+}
+
+.container {
+    width: 480px;
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.header {
+    /* margin-top: 30px; */
+    color: #fff;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header span {
+    font-size: 28px;
+}
+
+.game-zone {
+    width: 480px;
+    height: 480px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto 30px;
+    position: relative;
+}
+
+.game-zone .gameover {
+    width: 100vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #fff;
+    font-size: 130px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.zone {
+    width: 160px;
+    height: 160px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: auto;
+    cursor: url('./hammer.png') 30 25, auto;
+}
+
+.zone:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.zone:active {
+    cursor: auto;
+    cursor: url('./hammer-active.png') 30 25, auto;
+}
+
+.zone img {
+    width: 80%;
+    height: 80%;
+    padding-top: 10%;
+    padding-left: 10%;
+    object-fit: cover;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container button {
+    width: 235px;
+    height: 55px;
+    text-align: center;
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-transform: uppercase;
+    outline: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: .1s linear;
+    font-family: 'Syne Mono', monospace;
+}
+
+.container button i.fa {
+    margin-right: 5px;
+}
+
+.play {
+    border: 2px solid rgb(0, 255, 0);
+}
+
+.stop {
+    border: 2px solid rgb(255, 0, 0);
+}
+
+.container button:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.record {
+    margin: 10px auto 0;
+    width: 478px;
+    height: 40px;
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
+    color: #fff;
+    outline: none;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-count {
+    margin-left: 8px;
+}
+
+.modal {
+    width: 500px;
+    border: 1px solid #fff;
+    padding: 30px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.modal h2 {
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.modal p {
+    text-align: left;
+}
+
+.modal p:nth-child(3) span {
+    color: rgb(0, 175, 0);
+}
+
+.modal p:nth-child(4) span {
+    color: rgb(255, 24, 24);
+}
+
+.modal button {
+    width: 50%;
+    height: 40px;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid #fff;
+    outline: none;
+    color: #fff;
+    font-family: 'Syne Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .1s linear;
+    font-size: 17px;
+}
+
+.modal button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+@media screen and (max-width: 540px) {
+    .header {
+        font-size: 18px;
+    }
+
+    .header span {
+        font-size: 24px;
+    }
+
+    .container {
+        width: 300px;
+        padding-top: 10px;
+    }
+
+    .game-zone {
+        width: 300px;
+        height: 300px;
+        margin: 10px auto;
+    }
+
+    .zone {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container button {
+        width: 300px;
+        height: 40px;
+        margin-bottom: 5px;
+    }
+
+    .record {
+        width: 300px;
+        height: 40px;
+    }
+
+    .modal {
+        width: 300px;
+    }
+
+    .modal p {
+        font-size: 14px;
+    }
+
+    .game-zone .gameover {
+        font-size: 52px;
+    }
+}

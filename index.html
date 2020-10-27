@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the sleeper!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <script src="https://use.fontawesome.com/4f5cd90764.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="score">Score: <span>0</span></div>
+            <div class="time-remaining">Time left: <span>60</span>s</div>
+        </div>
+        
+        <div class="game-zone">
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="zone"></div>
+            <div class="gameover">Game Over</div>
+        </div>
+        <button class="play"><i class="fa fa-play-circle" aria-hidden="true"></i> Play</button>
+        <button class="stop"><i class="fa fa-stop-circle" aria-hidden="true"></i> Stop</button>
+        <div class="record"><span class="record-title">Your Record:</span><span class="record-count"></span></div>
+    </div>
+
+    <div class="modal">
+        <h2>Rules</h2>
+        <p>Sleepers will show in the fields for a bit time. You must have time to hit it.</p>
+        <p>• For the correct hit you will earn <span>+1</span> score</p>
+        <p>• For the wrong hit you have removed <span>-0.5</span> score</p>
+        <button>Got it</button>
+    </div>
+    <div class="overlay"></div>
+</body>
+</html>
