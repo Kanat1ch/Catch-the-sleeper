@@ -12,11 +12,11 @@ const modalBtn = document.querySelector('.modal button');
 const overlay = document.querySelector('.overlay');
 const select = document.querySelector('select');
 
-if (!(localStorage.getItem('record'))) {
-    localStorage.setItem('record', 0);
-    recordCountEl.textContent = localStorage.getItem('record');
+if (!(localStorage.getItem(`record-${select.value}`))) {
+    localStorage.setItem(`record-${select.value}`, 0);
+    recordCountEl.textContent = localStorage.getItem(`record-${select.value}`);
 } else {
-    recordCountEl.textContent = localStorage.getItem('record');
+    recordCountEl.textContent = localStorage.getItem(`record-${select.value}`);
 }
 
 
@@ -98,9 +98,9 @@ function startGame() {
             gameover.style.opacity = '1';
             gameover.style.transform = 'translate(-50%, -50%) scale(1)';
 
-            if (score > localStorage.getItem('record')) {
-                localStorage.setItem('record', score);
-                recordCountEl.textContent = localStorage.getItem('record');
+            if (score > localStorage.getItem(`record-${select.value}`)) {
+                localStorage.setItem(`record-${select.value}`, score);
+                recordCountEl.textContent = localStorage.getItem(`record-${select.value}`);
 
                 recordTitleEl.textContent = 'New Record:';
                 recordEl.style.border = '2px solid yellow';
@@ -139,7 +139,7 @@ function stopGame() {
     gameover.style.opacity = '0';
     gameover.style.transform = 'translate(-50%, -50%) scale(0)';
 
-    recordTitleEl.textContent = 'Your record:';
+    recordTitleEl.textContent = 'Your Record:';
     recordEl.style.border = '';
     recordEl.style.color = '';
 }
@@ -172,10 +172,21 @@ function closeModal(e) {
     }
 }
 
+function changeRecord() {
+    if (!(localStorage.getItem(`record-${select.value}`))) {
+        localStorage.setItem(`record-${select.value}`, 0);
+        recordCountEl.textContent = localStorage.getItem(`record-${select.value}`);
+    } else {
+        recordCountEl.textContent = localStorage.getItem(`record-${select.value}`);
+    }
+}
+
 playBtn.addEventListener('click', startGame);
 stopBtn.addEventListener('click', stopGame);
 modalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 document.body.addEventListener('keydown', closeModal);
 window.addEventListener('load', calcWidth);
+select.addEventListener('change', stopGame);
 select.addEventListener('change', changeLevel);
+select.addEventListener('change', changeRecord);
