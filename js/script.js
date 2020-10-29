@@ -10,6 +10,7 @@ const recordTitleEl = document.querySelector('.record-title');
 const modal = document.querySelector('.modal');
 const modalBtn = document.querySelector('.modal button');
 const overlay = document.querySelector('.overlay');
+const select = document.querySelector('select');
 
 if (!(localStorage.getItem('record'))) {
     localStorage.setItem('record', 0);
@@ -24,18 +25,49 @@ let timeRemaining = 60;
 let renderSleeper;
 let timerId;
 
-let sleeperRenderTime;
-let sleeperHideTime;
+let level = {
+    easy: {
+        sleeperRenderTime: 700,
+        sleeperHideTime: 1200
+    },
+    medium: {
+        sleeperRenderTime: 500,
+        sleeperHideTime: 900
+    },
+    hard: {
+        sleeperRenderTime: 300,
+        sleeperHideTime: 650
+    }
+};
 
 function calcWidth() {
     const windowWidth = document.documentElement.clientWidth;
 
     if (windowWidth > 540) {
-        sleeperRenderTime = 500;
-        sleeperHideTime = 900;
+        level = {
+            easy: {
+                sleeperRenderTime: 800,
+                sleeperHideTime: 1300
+            },
+            medium: {
+                sleeperRenderTime: 600,
+                sleeperHideTime: 1100
+            },
+            hard: {
+                sleeperRenderTime: 500,
+                sleeperHideTime: 900
+            }
+        };
+    }
+}
+
+function changeLevel() {
+    if (select.value === 'easy') {
+        return level.easy;
+    } else if (select.value === 'hard') {
+        return level.hard;
     } else {
-        sleeperRenderTime = 300;
-        sleeperHideTime = 650;
+        return level.medium;
     }
 }
 
@@ -54,6 +86,10 @@ function startGame() {
             clearInterval(timerId);
             clearInterval(renderSleeper);
             timeRemainingEl.textContent = '0';
+
+            zoneEl.forEach(item => {
+                item.removeEventListener('click', isCorrect);
+            });
 
             zoneEl.forEach(item => {
                 item.innerHTML = '';
@@ -75,16 +111,15 @@ function startGame() {
 
     renderSleeper = setInterval(() => {
         let index = Math.floor((Math.random() * zoneEl.length));
-        console.log(index);
         zoneEl[index].classList.add('active');
         zoneEl[index].innerHTML = `<img src="img/sleeper.png" alt="sleeper" class="active">`;
 
         setTimeout(() => {
             zoneEl[index].innerHTML = '';
             zoneEl[index].classList.remove('active');
-        }, sleeperHideTime);
+        }, changeLevel().sleeperHideTime);
         
-    }, sleeperRenderTime);
+    }, changeLevel().sleeperRenderTime);
 }
 
 function stopGame() {
@@ -143,3 +178,4 @@ modalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 document.body.addEventListener('keydown', closeModal);
 window.addEventListener('load', calcWidth);
+select.addEventListener('change', changeLevel);

@@ -17,7 +17,7 @@ body {
 .container {
     width: 480px;
     margin: 0 auto;
-    padding-top: 30px;
+    padding-top: 10px;
     text-align: center;
 }
 
@@ -106,16 +106,47 @@ body {
     font-family: 'Syne Mono', monospace;
 }
 
+.level {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+select {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    width: 478px;
+    height: 35px;
+    border: 1px solid #fff;
+    outline: none;
+    padding: 0 5px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Syne Mono', monospace;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+option {
+    background-color: #444;
+    width: 100px;
+    padding: 5px;
+    height: 35px;
+}
+
 .container button i.fa {
     margin-right: 5px;
 }
 
 .play {
-    border: 2px solid rgb(0, 255, 0);
+    border: 1px solid rgb(0, 255, 0);
 }
 
 .stop {
-    border: 2px solid rgb(255, 0, 0);
+    border: 1px solid rgb(255, 0, 0);
 }
 
 .container button:hover {
@@ -128,7 +159,7 @@ body {
     height: 40px;
     background-color: transparent;
     background-color: rgba(0, 0, 0, 0.3);
-    border: 2px solid #fff;
+    border: 1px solid #fff;
     color: #fff;
     outline: none;
     font-size: 22px;
@@ -208,7 +239,7 @@ body {
 
 @media screen and (max-width: 540px) {
     .header {
-        margin-top: 30px;
+        margin-top: 10px;
         font-size: 18px;
     }
 
