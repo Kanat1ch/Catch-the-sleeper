@@ -21,7 +21,7 @@ if (!(localStorage.getItem(`record-${select.value}`))) {
 
 
 let score = 0;
-let timeRemaining = 60;
+let timeRemaining = 30;
 let renderSleeper;
 let timerId;
 
@@ -127,8 +127,8 @@ function stopGame() {
     clearInterval(renderSleeper);
     score = 0;
     scoreEl.textContent = '0';
-    timeRemaining = 60;
-    timeRemainingEl.textContent = '60';
+    timeRemaining = 30;
+    timeRemainingEl.textContent = '30';
 
     zoneEl.forEach(item => {
         item.innerHTML = '';
